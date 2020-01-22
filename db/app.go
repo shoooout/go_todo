@@ -20,9 +20,53 @@ func dbConnect() *gorm.DB {
 	return db
 }
 
-//データベースの初期化
+//初期化
 func dbInit() {
 	db := dbConnect()
 	db.AutoMigrate(&Todo{})
 	defer db.Close()
+}
+
+//削除
+func dbDelete(id int) {
+	db := dbConnect()
+	var todo Todo
+	db.First(&todo, id)
+	db.Delete(&todo)
+	db.Close()
+}
+
+//追加
+func dbInsert(text string, status string) {
+	db := dbConnect()
+	db.Create(&Todo{Text: text, Status: status})
+}
+
+//更新
+func dbUpdate(id int, text string, status string) {
+	db := dbConnect()
+	var todo Todo
+	db.First(&todo, id)
+	todo.Text = text
+	todo.Status = status
+	db.Save(&todo)
+	db.Close()
+}
+
+//全取得
+func DbGetAll() []Todo {
+	db := dbConnect()
+	var todos []Todo
+	db.Order("created_at desc").Find(&todos)
+	db.Close()
+	return todos
+}
+
+//一つ取得
+func DbGetOne(id int) Todo {
+	db := dbConnect()
+	var todo Todo
+	db.First(&todo, id)
+	db.Close()
+	return todo
 }
