@@ -21,14 +21,14 @@ func dbConnect() *gorm.DB {
 }
 
 //初期化
-func dbInit() {
+func DbInit() {
 	db := dbConnect()
 	db.AutoMigrate(&Todo{})
 	defer db.Close()
 }
 
 //削除
-func dbDelete(id int) {
+func DbDelete(id int) {
 	db := dbConnect()
 	var todo Todo
 	db.First(&todo, id)
@@ -37,13 +37,13 @@ func dbDelete(id int) {
 }
 
 //追加
-func dbInsert(text string, status string) {
+func DbInsert(text string, status string) {
 	db := dbConnect()
 	db.Create(&Todo{Text: text, Status: status})
 }
 
 //更新
-func dbUpdate(id int, text string, status string) {
+func DbUpdate(id int, text string, status string) {
 	db := dbConnect()
 	var todo Todo
 	db.First(&todo, id)
