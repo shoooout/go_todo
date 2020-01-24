@@ -6,11 +6,29 @@
   </head>
   <body>
     <h1>Todoアプリでタスク管理</h1>
+
+    <h2>タスクを追加してください</h2>
     <form method="post" action="/new">
       <p>
         内容
         <input type="text" name="text" size="50" placeholder="タスクを入力" />
       </p>
+      <p>
+        状態
+        <select name="タスクの状態">
+          <option value="未完了">未完了</option>
+          <option value="実行中">実行中</option>
+          <option value="完了">完了</option>
+        </select>
+      </p>
+      <p><input type="submit" value="追加" /></p>
     </form>
+
+    <h2>タスク一覧</h2>
+    <ul>
+      {{range .todos}}
+      <li>[内容]{{ .Text }} [状態]{{ .Status }}</li>
+      {{end}}
+    </ul>
   </body>
 </html>
