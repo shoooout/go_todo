@@ -14,6 +14,9 @@ func main() {
 
 	router.LoadHTMLGlob("templates/*.html")
 
+	//cssなどの静的ファイルのディレクトリを指定
+	router.Static("/assets", "./assets/css")
+
 	//dbInit()
 	db.DbInit()
 
