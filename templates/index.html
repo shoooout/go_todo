@@ -11,34 +11,32 @@
 
   <body>
     <div class="app_title">
-      <h1>GoでTodoアプリ</h1>
+      <h1>GoでTodoアプリ作ってみた</h1>
     </div>
-    <h2>追加</h2>
-    <form method="post" action="/new">
-      <p>
-        内容<input
-          type="text"
-          name="text"
-          size="50"
-          placeholder="タスクを入力"
-        />
-      </p>
-      <p>
-        状態
-        <select name="status">
-          <option value="未完了">未完了</option>
-          <option value="実行中">実行中</option>
-          <option value="終了">終了</option>
-        </select>
-      </p>
-      <p><input type="submit" value="追加" /></p>
-    </form>
+    <div class="contents">
+      <form method="post" action="/new">
+        <p>
+          内容
+          <input type="text" name="text" size="50" placeholder="タスクを入力" />
+        </p>
+        <p>
+          状態
+          <select name="status">
+            <option value="未完了">未完了</option>
+            <option value="実行中">実行中</option>
+            <option value="終了">終了</option>
+          </select>
+        </p>
+        <p class="button-design"><input type="submit" value="追加" /></p>
+      </form>
+    </div>
 
-    <ul>
+    <ul class="label">
       {{ range .todos }}
       <li>
-        [内容]{{ .Text }}　　　　　[状態]{{ .Status }}
+        [内容]{{ .Text }}<{{ .Status }}>
         <label><a href="/detail/{{.ID}}">編集</a></label>
+        <label><a href="/delete_check/{{.ID}}">削除</a></label>
       </li>
       {{end}}
     </ul>

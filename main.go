@@ -28,7 +28,7 @@ func main() {
 	router.GET("/detail/:id", route.Detail)
 	//Update
 	router.POST("/update/:id", route.Update)
-	//削除確認
+	//delete確認
 	router.GET("/delete_check/:id", route.DelConf)
 	//Delete
 	router.POST("/delete/:id", route.Delete)

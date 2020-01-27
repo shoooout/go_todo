@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>タスクの削除</title>
+    <link
+      rel="stylesheet"
+      href="//localhost:8080/assets/style.css?<?php echo date('Ymd-Hi'); ?>"
+    />
+  </head>
+  <body>
+    <header>
+      <label><a href="/" methods="GET">Home</a></label>
+    </header>
+
+    <h1>削除確認</h1>
+    <p>本当に削除しますか？</p>
+    <ul class="delete-list">
+      <li>内容： {{.todo.Text}}</li>
+      <li>状態： {{.todo.Status}}</li>
+    </ul>
+
+    <form method="post" action="/delete/{{.todo.ID}}">
+      <p><input type="submit" value="削除" /></p>
+      <p><a href="/">戻る</a></p>
+    </form>
+  </body>
+</html>
