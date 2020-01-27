@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>Todo App</title>
-    <link rel="stylesheet" href="//localhost:8080/assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="//localhost:8080/assets/style.css?<?php echo date('Ymd-Hi'); ?>"
+    />
   </head>
 
   <body>
-    <h1>GoでTodoアプリ</h1>
+    <div class="app_title">
+      <h1>GoでTodoアプリ</h1>
+    </div>
     <h2>追加</h2>
     <form method="post" action="/new">
       <p>
